@@ -1,0 +1,56 @@
+# =========================
+# AI / Agent Orchestration
+# =========================
+langgraph==1.2.14
+langchain-core==1.6.7
+langchain-openai==1.6.3
+langsmith==0.14.1
+
+# =========================
+# MCP - Custom Jira MCP Server
+# =========================
+mcp[cli]==2.3.0
+
+# =========================
+# Backend API
+# =========================
+fastapi==0.142.2
+uvicorn[standard]==0.54.0
+
+# =========================
+# Frontend / Human Approval UI
+# =========================
+streamlit==1.64.0
+
+# =========================
+# HTTP / Async integrations
+# =========================
+httpx==0.28.1
+tenacity==9.1.4
+
+# =========================
+# GraphQL
+# =========================
+gql[httpx]==4.4.0
+
+# =========================
+# Jira
+# =========================
+atlassian-python-api
+
+# =========================
+# Slack
+# =========================
+slack-sdk==3.45.0
+
+# =========================
+# Microsoft Graph / Teams
+# =========================
+msgraph-sdk==1.64.0
+
+# =========================
+# Configuration / Validation
+# =========================
+pydantic==2.13.5
+pydantic-settings==2.15.0
+python-dotenv

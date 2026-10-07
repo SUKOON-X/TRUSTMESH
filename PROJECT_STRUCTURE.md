@@ -1,70 +1,77 @@
-# PROJECT STRUCTURE
+# Project Architecture
 
-
-
-MARKETPLACE
-    |
-    | 
-    EVENTS
-    |
-    | 
-EVENT BROKER 
-    |
-    | 
-    <!-- Outer events of TRUSTMESH. TRUSTMESH don't manage these steps. -->
-----------------------------------------------------------------------------
-    <!-- Inside TRUSTMESH system -->
-    |
-    |
-TRUSTMESH 
-    |
-    | 
-INGESION
-    |               
-    |                
-    |                 
-VALIDATATION      
-    |
-    |
-    |
-DEDUPLICATION
-    |
-    | 
-DETECTION
-    |
-    |
-INVESTINGATING SIGNAL
-    |              |
-    |               |
-    |                 |
-    |                  |
-    |                   |
-    |                    |
-    |                     |
-    |                      |
-    |                       |
-SUPERVISOR AGENT        CREATE JIRA ISSUES
-    |
-    |
-SPECIALIST AGENTS
-    |
-    |
-SUPERVISOR RECIEVES
-    |
-    |
-    HUMAN
-    |   |
-    |    |
-    |      |
-    |       |
-    |        |
-APPROVE     REJECT
-    |           |
-    |            |
-EXECUTE ACTION    EXIT
-    |
-    |
-UPDATE JIRA
+                           🏪 MARKETPLACE
+                                 │
+                          Orders / Sellers
+                          Products / Returns
+                          Payments / Shipping
+                          Delivery / Inventory
+                             Complaints
+                                 │
+                                 ↓
+                          📡 EVENTS / APIs
+                                 │
+                                 ↓
+                              KAFKA
+                                 │
+                                 ↓
+                         EVENT WORKER
+                                 │
+                    ┌────────────┴────────────┐
+                    ↓                         ↓
+               Validate                  Deduplicate
+                    └────────────┬────────────┘
+                                 ↓
+                         DETECTION ENGINE
+                                 │
+                    Rules / SQL / Anomaly
+                                 ↓
+                     🚨 COMPLIANCE SIGNAL
+                                 │
+                                 ↓
+                         👨‍💼 SUPERVISOR
+                                 │
+                        
+                                 |
+                                 ↓                  
+                        Specialist Agents            
+                                 |
+                                 ↓
+                              Evidence
+                                 ↓
+                         👨‍💼 SUPERVISOR
+                                 │
+                         Finding + Recommendation
+                                 ↓
+                        📝 Approval Request
+                                 ↓
+                           PostgreSQL
+                                 │
+                       WebSocket / SSE
+                                 ↓
+                         ⚛️ REACT UI
+                                 ↓
+                            👤 HUMAN
+                         ┌───────┴───────┐
+                         ↓               ↓
+                      APPROVE          REJECT
+                         ↓               ↓
+                   FastAPI            FastAPI
+                         ↓
+                  Authorization
+                         ↓
+                  Action Guard
+                         ↓
+                   Kill Switch
+                         ↓
+                 Execute Action
+                         ↓
+              ┌──────────┼───────────┐
+              ↓          ↓           ↓
+          Marketplace   Jira      Audit Log
+                         │
+                         ↓
+                    MCP Server
 
 
 
@@ -215,3 +222,5 @@ Like:
 
 ## UPDATE JIRA
 - And after executed the action, update Jira through JIRA MCP. 
+
+
