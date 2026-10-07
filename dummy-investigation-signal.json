@@ -1,0 +1,36 @@
+{
+  "signal_id": "SIG-20261007-00125",
+  "signal_type": "HIGH_SELLER_CANCELLATION_RATE",
+  "created_at": "2026-10-07T18:00:00Z",
+
+  "business_unit": "marketplace",
+
+  "seller": {
+    "seller_id": "SELLER-123",
+    "seller_name": "ABC Electronics"
+  },
+
+  "severity": "HIGH",
+
+  "trigger": {
+    "metric": "seller_cancellation_rate",
+    "observed_value": 0.35,
+    "threshold": 0.10,
+    "measurement_window": "24h"
+  },
+
+  "evidence": {
+    "total_orders": 1000,
+    "seller_cancelled_orders": 350,
+    "customer_cancelled_orders": 42
+  },
+
+  "reason": "Seller-initiated cancellations are significantly above the permitted threshold.",
+
+  "recommended_specialists": [
+    "shipping",
+    "compliance"
+  ],
+
+  "status": "NEW"
+}
