@@ -1,0 +1,3 @@
+TrustMesh (E-commerce marketplace)
+Description: Control-tower platform for seller compliance across five business units: supervisor-led parallel specialist agents, custom MCP Jira server, Streamlit approvals, per-unit token budgets, kill switch; delivered discovery-to-training. Target: 70% faster case turnaround. Inspired by Anthropic/Rakuten (Apr 2026) and ServiceNow Control Tower (May 2026).
+Tech Stack: LangGraph supervisor, custom MCP server, Jira, Slack/Teams, Streamlit, GraphQL, LangSmith, asyncio.
